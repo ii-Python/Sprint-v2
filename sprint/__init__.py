@@ -1,4 +1,5 @@
 # Base system
+from .utils.colors import colored
 from .utils.logging import SprintLog
 from .core.parser.parser import Parser
 from .core.handler.errors import SprintError

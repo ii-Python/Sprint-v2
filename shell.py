@@ -1,9 +1,25 @@
+# Copyright 2021; iiPython
+
 # Modules
-from sprint import Parser
+from sprint import Parser, colored
 
-# Main loop
+# Command grabber
+def command_input(indent = 0):
+
+    # Handle input
+    text = input(colored("Sprint >> " + (" " * indent), "green"))
+
+    # Check for backslashes
+    if text.endswith("\\"):
+        text = text[:-1] + command_input(indent + 2)
+
+    # Return our command
+    return text
+
+# Main shell loop
 while True:
-    x = input("> ")
+    command = command_input()
 
-    p = Parser(x)
-    p.parse()
+    # Load parser
+    parser = Parser(command)
+    parser.parse()
