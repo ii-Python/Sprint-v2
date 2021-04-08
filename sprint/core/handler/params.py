@@ -1,3 +1,4 @@
+# Parameter class
 class SprintParams(object):
 
     def __init__(self, values: dict = {}):

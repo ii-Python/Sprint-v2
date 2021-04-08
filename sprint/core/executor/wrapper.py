@@ -44,12 +44,12 @@ class Command(object):
         location = location.replace("\\", "/")
 
         # Create environment
-        sys.argv = [repr(self.cmd)] + self.params.get("args")  # Enable existing CLIs to function
+        sys.argv = [repr(self.cmd)] + self.params.values["args"]  # Enable existing CLIs to function
 
         os.environ["SP_WORKDIR"] = os.getcwd()  # Current working directory
         os.environ["SP_ASSETDIR"] = dirname(location)  # Top level directory of command
 
-        os.environ["SP_PARAMS"] = json.dumps(self.params.values)
+        os.environ["SP_PARAMS"] = self.params.values
 
         sys.path.append(os.getenv("SP_ASSETDIR"))
 

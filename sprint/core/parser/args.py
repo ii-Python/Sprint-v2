@@ -7,5 +7,8 @@ class Argument(object):
     def __repr__(self):
         return self.arg
 
+    def __str__(self):
+        return self.arg
+
     def is_pipe(self):
         return self.arg == ">>" or self.arg == "<<"
