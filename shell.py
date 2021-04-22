@@ -1,13 +1,13 @@
 # Copyright 2021; iiPython
 
 # Modules
-from sprint import Parser, colored
+from sprint import Parser, console
 
 # Command grabber
 def command_input(indent = 0):
 
     # Handle input
-    text = input(colored("Sprint >> " + (" " * indent), "green"))
+    text = console.input("[green]Sprint [yellow]>> [/yellow]" + (" " * indent))
 
     # Check for backslashes
     if text.endswith("\\"):
