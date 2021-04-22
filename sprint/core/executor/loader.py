@@ -87,7 +87,7 @@ class Loader(object):
         STATUS = False
         if len(MATCHING) > 1:
             STATUS = True
-            MATCHING = [_["command"]["full_name"] for _ in MATCHING]
+            MATCHING = [{"name": _["command"]["name"], "path": _["command"]["path"]} for _ in MATCHING]
 
         # Return matching commands
         return STATUS, MATCHING

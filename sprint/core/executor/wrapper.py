@@ -32,9 +32,9 @@ class Command(object):
                 return LOGGER.error(f"command '{self.cmd}' not found.")
 
         else:
-            print("Command conflict found, below are your options:")
+            print("Conflict found, please rename one of the following.")
             for match in command:
-                print(match)
+                print(" ", f"{match['name']} (from '{match['path']}')")
 
             return
 
@@ -61,7 +61,17 @@ class Command(object):
                 location
             )
             module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
+
+            try:
+                spec.loader.exec_module(module)
+
+            except ValueError as VE:
+                try:
+                    _MOD_EXIT_CODE = int(str(VE))
+                    return "Exit code {}".format(str(_MOD_EXIT_CODE))
+
+                except ValueError:
+                    raise ValueError(VE)
 
         except Exception as Error:
             return LOGGER.error(Error)

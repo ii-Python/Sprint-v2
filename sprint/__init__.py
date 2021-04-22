@@ -11,3 +11,5 @@ from .utils.path import PATH
 __author__ = "iiPython"
 __copyright__ = "©2021 iiPython"
 __license__ = "MIT"
+
+__version__ = "1.0.0"
