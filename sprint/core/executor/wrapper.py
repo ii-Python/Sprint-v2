@@ -7,6 +7,7 @@ from os.path import dirname
 from .loader import Loader
 from ..handler.logging import Logger
 from ..handler.params import SprintParams
+from ..parser.json import SprintJSONEncoder
 
 # Load path
 from ...utils.path import PATH
@@ -49,7 +50,7 @@ class Command(object):
         os.environ["SP_WORKDIR"] = os.getcwd()  # Current working directory
         os.environ["SP_ASSETDIR"] = dirname(location)  # Top level directory of command
 
-        os.environ["SP_PARAMS"] = self.params.values
+        os.environ["SP_PARAMS"] = json.dumps(self.params.values, cls = SprintJSONEncoder)
 
         sys.path.append(os.getenv("SP_ASSETDIR"))
 

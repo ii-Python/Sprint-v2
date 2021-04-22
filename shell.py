@@ -18,7 +18,12 @@ def command_input(indent = 0):
 
 # Main shell loop
 while True:
-    command = command_input()
+    try:
+        command = command_input()
+
+    except KeyboardInterrupt:
+        print("^C")
+        continue
 
     # Load parser
     parser = Parser(command)
